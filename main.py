@@ -1,38 +1,36 @@
-import user
-import account
-import transaction
+from user import user_operations, user_login, create_user
+
+def main_menu():
+    print("\nWelcome to the Stock Transaction Manager")
+    print("1. Login")
+    print("2. Create an Account")
+    user_choice = input("Enter choice (1-2): ")
+    if user_choice == '1':
+        user_id = user_login()
+        if user_id:
+            user_operations_menu(user_id)
+    elif user_choice == '2':
+        user_id = create_user()
+        if user_id:
+            user_operations_menu(user_id)
+
+def user_operations_menu(user_id):
+    while True:
+        print("\nSelect an operation:")
+        print("3. Add Bank Account")
+        print("4. Record a transaction")
+        print("5. View transactions")
+        print("6. View accounts")
+        print("7. Delete an account")
+        print("8. Delete a transaction")
+        print("9. Exit")
+        choice = input("Enter choice (3-9): ")
+        if choice == '9':
+            break
+        user_operations(int(choice), user_id)
 
 def main():
-    print("Welcome to Stock Transaction Manager")
-    user_id = user.login()
-    if user_id:
-        print("Login successful!")
-        account.list_accounts(user_id)
-        while True:
-            print("\n1. Create an account")
-            print("2. Record a transaction")
-            print("3. View accounts")
-            print("4. View transactions")
-            print("5. Delete an account")
-            print("6. Delete a transaction")
-            print("7. Exit")
-            choice = input("Enter choice: ")
-            if choice == '1':
-                account.create_account(user_id)
-            elif choice == '2':
-                transaction.record_transaction(user_id)
-            elif choice == '3':
-                account.list_accounts(user_id)
-            elif choice == '4':
-                transaction.view_transactions(user_id)
-            elif choice == '5':
-                account.delete_account(user_id)
-            elif choice == '6':
-                transaction.delete_transaction(user_id)
-            elif choice == '7':
-                break
-    else:
-        print("Login failed, please check your username and password.")
+    main_menu()
 
 if __name__ == "__main__":
     main()
