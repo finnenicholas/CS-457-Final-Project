@@ -10,6 +10,8 @@ My stonks project for UNR CS 457 Database systems
 **Description:**  
 The Stock Transaction Manager is an application designed to help users manage their financial transactions related to stock trading efficiently. It allows users to create and manage accounts, record buy and sell transactions, view transactions per account, and delete transactions or accounts.
 
+Have a file called db.py with all your database connection info.
+
 ## Tutorial
 
 ### How to Use This Application:
